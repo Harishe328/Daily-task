@@ -1,5 +1,5 @@
 <?php
-echo "Hello world"."<br>";
+echo "Hello world" . "<br>";
 //variables
 // $x=15;
 // $y=4;
@@ -53,7 +53,6 @@ echo "Hello world"."<br>";
 //     echo "failure"."<br>";
 // }
 
-
 // switch($y){
 //     case 1:{
 //         echo "one";
@@ -85,8 +84,7 @@ echo "Hello world"."<br>";
 //     if($y==8)break;
 // }
 
-
-// do{ 
+// do{
 //     $y++;
 //     if($y==8)continue;
 //     echo "$y ";
@@ -131,7 +129,6 @@ echo "Hello world"."<br>";
 // ref($num);
 // echo $num;
 
-
 // function ref1($company,...$name){    //function using rest parameter
 //     $len=count($name);
 //     for($i=0;$i<$len;$i++){
@@ -148,7 +145,7 @@ echo "Hello world"."<br>";
 //         $a++;
 //         add($a);
 //     }
-    
+
 // }
 // add(1);
 
@@ -162,7 +159,7 @@ echo "Hello world"."<br>";
 // echo str_replace("Morning","After",$str)."<br>";
 // echo strpos("Good Morning","Good")."<br>";
 
-//Array function 
+//Array function
 // $arr=array(2,5,6,9,1,4,3);
 // echo count($arr);
 // echo array_pop($arr);

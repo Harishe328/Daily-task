@@ -14,8 +14,8 @@
         <input type="submit">
     </form>
     <?php
-    echo $_GET["name"]." ". $_GET["email"];
-    ?>
+echo $_GET["name"] . " " . $_GET["email"];
+?>
 </body>
 </html>
 

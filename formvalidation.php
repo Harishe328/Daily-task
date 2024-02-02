@@ -1,26 +1,26 @@
 <?php
-$nameerror="";
-$mailerror="";
-if(isset($_GET["submit"])){
-    $name=$_GET["name"];
-    $mail=$_GET["email"];
-    if(empty($name)){
-        $nameerror="* Name is required";
-    }else{
-        $name=trim($name);
-        $name=htmlspecialchars($name);
-        if(!preg_match("/^[a-zA-Z ]$/",$name)){
-            $nameerror="* Name Should contain only Alphabets";
+$nameerror = "";
+$mailerror = "";
+if (isset($_GET["submit"])) {
+    $name = $_GET["name"];
+    $mail = $_GET["email"];
+    if (empty($name)) {
+        $nameerror = "* Name is required";
+    } else {
+        $name = trim($name);
+        $name = htmlspecialchars($name);
+        if (!preg_match("/^[a-zA-Z ]$/", $name)) {
+            $nameerror = "* Name Should contain only Alphabets";
         }
     }
-    if(empty($mail)){
-        $mailerror="* Mail Id is required";
-    }else{
-        if(!filter_var($mail,FILTER_VALIDATE_EMAIL)){
-            $mailerror="* Mail ID format is wrong";
+    if (empty($mail)) {
+        $mailerror = "* Mail Id is required";
+    } else {
+        if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+            $mailerror = "* Mail ID format is wrong";
         }
     }
-    
+
 }
 ?>
 <!DOCTYPE html>
@@ -36,12 +36,12 @@ if(isset($_GET["submit"])){
             <tr>
                 <td><label for="name">Name :</label></td>
                 <td><input type="text" name="name"></td>
-                <td><div style="color: red;"><?php echo $nameerror;?></div></td>
+                <td><div style="color: red;"><?php echo $nameerror; ?></div></td>
             </tr>
             <tr>
                 <td><label for="email">Email :</label></td>
                 <td><input type="text" name="email"></td>
-                <td><div style="color: red;"><?php echo $mailerror;?></div></td>
+                <td><div style="color: red;"><?php echo $mailerror; ?></div></td>
             </tr>
             <tr>
                 <td><button type="submit" name="submit">Submit</button></td>

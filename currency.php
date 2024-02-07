@@ -4,6 +4,14 @@ if (isset($_POST["submit"])) {
     $Amount = $_POST['amount'];
     $code = $_POST['code'];
     $code = strtoupper($code);
+    $arr = array("USA" => 83.4, "SRILANKA" => 0.24, "EURO" => 89.31, "SINGAPORE" => 61.74, "DUBAI" => 22.61);
+    if (empty($code)) {
+        echo "* Country code  is required" . "<br>";
+    } 
+        if (array_key_exists($code, $arr)) {
+            $result = $Amount * $arr[$code];
+        } 
+    }
     // switch ($code) {
     //     case "USA":{
     //             $result = $Amount * 83.4;
@@ -29,10 +37,8 @@ if (isset($_POST["submit"])) {
     //             echo "Given is invalid";
     //             break;}
     // }
-    $arr=array("USA"=>83.4,"SRILANKA"=>0.24,"EURO"=>89.31,"SINGAPORE"=>61.74,"DUBAI"=>22.61);
-    // print_r($arr[$code])
-    $result = $Amount * $arr[$code];
-}
+
+
 
 ?>
 <!DOCTYPE html>
@@ -52,18 +58,25 @@ if (isset($_POST["submit"])) {
     </tr>
     <tr>
         <td><label for="countrycode">Country code:</label></td>
-        <td><input type="text" name="code"></td><br>
+        <td><select name="code" >
+            <option value="" disabled selected>Select any option</option>
+            <option value="usa">USA</option>
+            <option value="Srilanka">SL</option>
+            <option value="euro">European Country</option>
+            <option value="singapore">Singapore</option>
+            <option value="dubai">Dubai</option>
+        </select></td><br>
     </tr>
     <tr>
         <td><input type="submit" name="submit"></td>
     </tr>
-    <?php if (isset($_POST["submit"])) { ?>
+    <?php if (isset($_POST["submit"])) {?>
     <tr>
         <td><label for="ans">ans :</label></td>
         <td><input type="text" name="ans" value="<?php echo $result; ?>"></td>
     </tr>
-    
-    <?php } ?>
+
+    <?php }?>
     </table>
    </form>
    <!-- <script >

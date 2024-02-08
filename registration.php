@@ -1,4 +1,5 @@
 <?php
+include("./connection.php");
 $a1 = "";
 $a2 = "";
 $a3 = "";
@@ -28,7 +29,7 @@ if (isset($_POST["submit"])) {
     } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
         $a5 = "* Mail ID format is wrong";
     } elseif ($_POST["age"] > 150) {
-        $a6 = "Invalid age";
+        $a6 = "Man cannot survive";
     } else {
         $name = $_POST["name"];
         $age = $_POST["age"];
@@ -37,23 +38,24 @@ if (isset($_POST["submit"])) {
         $uName = $_POST["username"];
         $password = $_POST["password"];
 
-    $servername = "localhost";
-    $dbusername = "root";
-    $dbpassword = "admin@123";
-    $dbname = "Registrationform";
+    // $servername = "localhost";
+    // $dbusername = "root";
+    // $dbpassword = "admin@123";
+    // $dbname = "Registrationform";
 
-    $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+    // $conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+    // if ($conn->connect_error) {
+    //     die("Connection failed: " . $conn->connect_error);
+    // }
 
-    $stmt = $conn->prepare("insert into reg(Name, Age, Email, Phone_Number, Username, Password)
+    $stmt = $conn->prepare("insert into reg(name, age, email, phone_number, username, password)
     values(?,?,?,?,?,?)");
     $stmt->bind_param('sissss', $name, $age, $email, $phone, $uName, $password);
     $stmt->execute();
-
+    echo "New records created successfully";
     $stmt->close();
+    $conn->close();
 }
 }
 ?>
@@ -110,7 +112,7 @@ if (isset($_POST["submit"])) {
                 <?php }?>
             </tr>
             <tr>
-                <td><label for="phone">Phone Number</label></td>
+                <td><label for="phone">Phone Number :</label></td>
                 <td><input type="tel" name="phone" required></td><br>
                 <?php if (isset($_POST["submit"])) {?>
                 <td><h3><?php echo $a4; ?></h3></td>
@@ -138,7 +140,7 @@ if (isset($_POST["submit"])) {
                 <?php }?>
             </tr>
             <tr>
-                <td><input id="btn" type="submit" name="submit"></td>
+                <td><input id="btn" type="submit" name="submit" value="Submit"></td>
             </tr>
         </table>
     </form>

@@ -1,0 +1,47 @@
+<?php
+include("./connection.php");
+session_start();
+$a1 = "";
+$a2 = "";
+$a3 = "";
+if (isset($_POST["submit"])) {
+    if (!preg_match("/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s])([^\s]){8,20}$/m", $_POST["password"])) {
+        $a1 = "* Password validation not match";
+    } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        $a2 = "* Mail ID format is wrong";
+    } else {
+        $email = $_POST["email"];
+        $pass = $_POST["password"];
+
+        $sql = "SELECT password FROM reg WHERE email=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                // $dName=$row["Name"];
+                // $dAge=$row["Age"];
+                // $dEmail=$row["Email"];
+                // $dPhone=$row["Phone_Number"];
+                // $dusername=$row["Username"];
+                $dpassword = $row["password"];
+                if ($dpassword == $pass) {
+                    $_SESSION["Email"]=$email;
+                    header("Location:http://localhost/Daily-task/HomePage.php");
+                    // echo $dName,$dAge,$dEmail,$dPhone,$dusername,$dpassword;
+                } else {
+                    $a3 = "Invalid Password";
+                }
+            }
+        } else {
+            echo "Please SIGNIN first";
+        }
+
+        $stmt->close();
+        $conn->close();
+
+    }
+}
+?>

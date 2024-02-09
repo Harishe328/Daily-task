@@ -12,10 +12,11 @@ if (isset($_POST["submit"])) {
     } else {
         $email = $_POST["email"];
         $pass = $_POST["password"];
+        $status="Active";
 
-        $sql = "SELECT password FROM reg WHERE email=?";
+        $sql = "SELECT password FROM reg WHERE email=? AND status=?";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("s", $email);
+        $stmt->bind_param("ss", $email, $status);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -26,9 +27,11 @@ if (isset($_POST["submit"])) {
                 // $dEmail=$row["Email"];
                 // $dPhone=$row["Phone_Number"];
                 // $dusername=$row["Username"];
-                $dpassword = $row["password"];
+                $dpassword = convert_uudecode($row["password"]);
                 if ($dpassword == $pass) {
                     $_SESSION["Email"]=$email;
+                    $_SESSION["Password"]=$pass;
+                    $_SESSION["Name"]=$row["Name"];
                     header("Location:http://localhost/Daily-task/HomePage.php");
                     // echo $dName,$dAge,$dEmail,$dPhone,$dusername,$dpassword;
                 } else {

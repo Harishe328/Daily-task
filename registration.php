@@ -36,7 +36,8 @@ if (isset($_POST["submit"])) {
         $email = $_POST["email"];
         $phone = $_POST["phone"];
         $uName = $_POST["username"];
-        $password = $_POST["password"];
+        $password = convert_uuencode($_POST["password"]);
+        $status="Active";
 
     // $servername = "localhost";
     // $dbusername = "root";
@@ -49,11 +50,11 @@ if (isset($_POST["submit"])) {
     //     die("Connection failed: " . $conn->connect_error);
     // }
 
-    $stmt = $conn->prepare("insert into reg(name, age, email, phone_number, username, password)
-    values(?,?,?,?,?,?)");
-    $stmt->bind_param('sissss', $name, $age, $email, $phone, $uName, $password);
+    $stmt = $conn->prepare("insert into reg(name, age, email, phone_number, username, password, status)
+    values(?,?,?,?,?,?,?)");
+    $stmt->bind_param('sisssss', $name, $age, $email, $phone, $uName, $password, $status);
     $stmt->execute();
-    echo "New records created successfully";
+    echo "<h3 style='color:white'>New records created successfully</h3>";
     $stmt->close();
     $conn->close();
 }
@@ -67,23 +68,26 @@ if (isset($_POST["submit"])) {
     <title>Registration Form</title>
     <style>
         body{
-            background-color: black;
+           background-image: url("https://cdn.pixabay.com/photo/2024/01/05/16/04/rocks-8489732_960_720.jpg");
+           background-repeat: no-repeat;
+           background-size: cover;
         }
         h3{
             color:red;
         }
         #btn{
-            background-color: green;
+            /* background-color: green; */
             border:1px solid black;
             padding: 3px;
-            color:white;
+            color:red;
         }
         table{
             position: relative;
             top: 50px;
             left:400px;
             border: 2px solid red;
-            background-color: pink;
+            color:white;
+            /* background-color: pink; */
         }
     </style>
 </head>

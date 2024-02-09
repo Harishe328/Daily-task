@@ -15,15 +15,15 @@ include("./login.php");
             <tr>
                 <td><label for="email">Email </label></td><br>
                 <td><input type="mail" name="email" required></td>
-                </tr>
+            </tr>
                 <?php if (isset($_POST["submit"])) {?>
                 <tr><td><h3><?php echo $a2; ?></h3></td></tr>
                 <?php }?>
-            </tr>
+            
             <tr>
                 <td><label for="password">Password </label></td><br>
                 <td><input type="password" name="password" required></td>
-                </tr>
+            </tr>
                 <?php if (isset($_POST["submit"])) {?>
                 <tr><td><h3><?php echo $a1,$a3; ?></h3></td></tr>
                 <?php }?>

@@ -1,5 +1,5 @@
 table{
-    background-image: linear-gradient(to bottom right,rgb(70, 123, 201),rgb(62, 119, 204),rgb(135, 36, 165));
+    /* background-image: linear-gradient(to bottom right,rgb(70, 123, 201),rgb(62, 119, 204),rgb(135, 36, 165)); */
     position: relative;
     top: 200px;
     left: 450px;
@@ -7,7 +7,7 @@ table{
     border: 2px solid rgb(117, 199, 236);
     height: 150px;
     width: 150px;
-
+    color: white;
 }
 h3{
     color:red;
@@ -15,10 +15,14 @@ h3{
     font-family: 'Times New Roman', Times, serif;
 }
 body{
-    background-color: aqua;
+    /* background-color: aqua; */
+    background-image: url("./istockphoto-624183176-612x612.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-position: center; */
 }
 #submit{
-    background-color: rgb(103, 122, 207);
+    /* background-color: rgb(103, 122, 207); */
     position: relative;
     left: 95px;
     border-radius: 20px;

@@ -5,7 +5,7 @@ $a3 = "";
 include "./connection.php";
 session_start();
 $email = $_SESSION["Email"];
-
+$name=$_SESSION["Name"];
 if (isset($_POST["submit"])) {
     if (strlen($_POST["phone"]) != 10) {
         $a1 = "* Phone Number should contain ten number";
@@ -58,6 +58,7 @@ if (isset($_POST["submit"])) {
     </style>
 </head>
 <body>
+    <h3>Hi<?php echo $name?></h3>
     <form action="" method="post">
         <table >
             <tr>

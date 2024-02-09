@@ -1,4 +1,10 @@
 <?php
+$dName="";
+$dAge="";
+$dEmail="";
+$dPhone="";
+$dusername="";
+$dpassword ="";
 include("./connection.php");
 session_start();
 $email=$_SESSION["Email"];
@@ -17,13 +23,11 @@ if ($result->num_rows > 0) {
         $dEmail=$row["email"];
         $dPhone=$row["phone_number"];
         $dusername=$row["username"];
-        $dpassword = $row["password"];}
+        // $dpassword = $row["password"];
+    }
     }
 
-function remove(){
-    session_unset(); 
-    session_destroy();
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,21 +44,9 @@ function remove(){
             font-size: larger;
             left: 550px;
         }
-        button{
-            position: relative;
-            left: 1020px; 
-            background-color: black;
-            margin: 0px;
-            font-size: medium;
-            color:red;
-            padding: 0;
-            border: none;
-            text-decoration: underline;
-            cursor: pointer;
-        }
         a{
             position: relative;
-            left: 1000px;
+            left: 900px;
             color:red;
         }
 
@@ -69,9 +61,11 @@ function remove(){
     </style>
 </head>
 <body>
+    <h3>Hi <?php echo $dusername?></h3>
     <h3>Welcome to HomePage</h3>
     <a href="http://localhost/Daily-task/profileupdate.php">Update Profile</a>
-    <button onclick="remove()"><a href="http://localhost/Daily-task/logout.php"></a>logout</button>
+    <a href="http://localhost/Daily-task/logout.php">logout</a>
+    <a href="http://localhost/Daily-task/delete.php">Delete Profile</a>
     <table border="5">
         <tr>
             <td>Name</td>
@@ -93,10 +87,10 @@ function remove(){
             <td>Username</td>
             <td><?php echo $dusername?></td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td>Password</td>
             <td><?php echo $dpassword?></td>
-        </tr>
+        </tr> -->
     </table>
 </body>
 </html>

@@ -40,7 +40,7 @@ if (isset($_POST["submit"])) {
             border: 2px solid black;
         }
         h3{
-            color:aqua;
+            color:red;
             position: relative;
             left: 100px;
         }
@@ -55,11 +55,17 @@ if (isset($_POST["submit"])) {
         body{
             background-color: aqua;
         }
+        a{
+            position:relative;
+            left:1050px;
+            color: red;
+        }
     </style>
 </head>
 <body>
-    <h3>Hi<?php echo $name?></h3>
+    <h3>Hi <?php echo $name?></h3>
     <form action="" method="post">
+        <a href="http://localhost/Daily-task/HomePage.php">HomePage</a>
         <table >
             <tr>
                 <td><label for="Age">Age :</label></td>
@@ -81,6 +87,7 @@ if (isset($_POST["submit"])) {
             <?php if (isset($_POST["submit"])) {?>
                 <tr><td><h3><?php echo $a3; ?></h3></td></tr>
                 <?php }?>
+                
         </table>
     </form>
 </body>

@@ -22,16 +22,12 @@ if (isset($_POST["submit"])) {
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                // $dName=$row["Name"];
-                // $dAge=$row["Age"];
-                // $dEmail=$row["Email"];
-                // $dPhone=$row["Phone_Number"];
-                // $dusername=$row["Username"];
+                // $dname=$row["name"];       
                 $dpassword = convert_uudecode($row["password"]);
                 if ($dpassword == $pass) {
                     $_SESSION["Email"]=$email;
-                    $_SESSION["Password"]=$pass;
-                    $_SESSION["Name"]=$row["Name"];
+                    $_SESSION["Password"]=$pass;   
+                    // $_SESSION["Name"]=$dname;                
                     header("Location:http://localhost/Daily-task/HomePage.php");
                     // echo $dName,$dAge,$dEmail,$dPhone,$dusername,$dpassword;
                 } else {

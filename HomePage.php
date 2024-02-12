@@ -7,6 +7,7 @@ $dusername="";
 $dpassword ="";
 include("./connection.php");
 session_start();
+
 $email=$_SESSION["Email"];
 
 
@@ -26,7 +27,7 @@ if ($result->num_rows > 0) {
         // $dpassword = $row["password"];
     }
     }
-
+$_SESSION["Name"]=$dName;
 
 ?>
 <!DOCTYPE html>
@@ -66,6 +67,7 @@ if ($result->num_rows > 0) {
     <a href="http://localhost/Daily-task/profileupdate.php">Update Profile</a>
     <a href="http://localhost/Daily-task/logout.php">logout</a>
     <a href="http://localhost/Daily-task/delete.php">Delete Profile</a>
+    
     <table border="5">
         <tr>
             <td>Name</td>

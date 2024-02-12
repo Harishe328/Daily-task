@@ -1,23 +1,23 @@
 <?php
-abstract class A
+abstract class Abstruct1
 {
     abstract public function name($name);
 }
-class B extends A
+class Abstruct2 extends Abstruct1
 {
     public function name($name)
     {
         echo "Hi $name welcome to class B.<br>";
     }
 }
-class C extends A
+class Abstruct3 extends Abstruct1
 {
     public function name($name)
     {
         echo "Hi $name welcome to class C";
     }
 }
-$b = new B();
+$b = new Abstruct2();
 $b->name("Harish");
-$c = new C();
+$c = new Abstruct3();
 $c->name("Harish");

@@ -17,3 +17,9 @@ class Dog implements Animal
         echo "Brakes";
     }
 }
+class Lion implements Animal{
+    public function makeSound()
+    {
+        echo "Roar";
+    }
+}

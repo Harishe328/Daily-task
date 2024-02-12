@@ -1,12 +1,12 @@
 <?php
-include("./connection.php");
+include "./connection.php";
 session_start();
 if (isset($_POST["submit"])) {
-    $delemail=$_POST["delemail"];
-    $delpassword=$_POST["delpassword"];
-    $status="Deleted";
-    
-    if($delemail==$_SESSION["Email"] && $delpassword==$_SESSION["Password"]){
+    $delemail = $_POST["delemail"];
+    $delpassword = $_POST["delpassword"];
+    $status = "Deleted";
+
+    if ($delemail == $_SESSION["Email"] && $delpassword == $_SESSION["Password"]) {
         // echo "****";
         // echo $_SESSION["Email"] ,$_SESSION["Password"];
         $stmt = $conn->prepare("UPDATE reg SET status=? WHERE email=?");
@@ -24,6 +24,20 @@ if (isset($_POST["submit"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Delete</title>
+    <style>
+        table{
+            position:relative;
+            top: 250px;
+            left:500px;
+            border: 2px solid;
+            border-radius: 10px;
+        }
+        body{
+            background-image: url("./istockphoto-1073667056-1024x1024.webp");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
     <form action="" method="post">
@@ -38,7 +52,7 @@ if (isset($_POST["submit"])) {
             </tr>
             <tr>
                 <td><input type="submit" name="submit" id="submit" value="CONFIRE"></td>
-            </tr> 
+            </tr>
             <?php if (isset($_POST["submit"])) {?>
             <tr><td><h3><?php echo "Deleted Successfully"; ?></h3></td></tr>
             <?php }?>

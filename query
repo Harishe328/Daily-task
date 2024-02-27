@@ -1,0 +1,74 @@
+select e_name,d_name,loc
+from Emp join DEPT
+on Emp.dept_no=DEPT.dept_no where job in('clerk','manager');
+
+select Emp.*,d_name
+from Emp join DEPT
+on Emp.dept_no=DEPT.dept_no where job='manager' AND Emp.dept_no=10;
+
+select e_name,loc
+from Emp join DEPT
+on Emp.dept_no=DEPT.dept_no ;
+
+select e_name,d_name
+from Emp join DEPT
+on Emp.dept_no=DEPT.dept_no where d_name like '%a%';
+
+select loc,count(*)
+from Emp join DEPT
+on Emp.dept_no=DEPT.dept_no group by loc;
+
+select loc,count(*)
+from Emp join DEPT
+on Emp.dept_no=DEPT.dept_no group by loc;
+
+select Emp.*
+from Emp 
+where Emp.dept_no IN (select DEPT.dept_no
+from DEPT
+where loc='chennai');
+
+use employees;
+select sal.salary from salaries as sal join employees as emp on sal.emp_no = emp.emp_no where sal.salary<50000 and emp.hire_date ='1986-06-26';
+create view salaries_max as select emp_no, max(salary) as salary from salaries group by emp_no;create view salaries_max as select emp_no, max(salary) as salary from salaries group by emp_no;
+select emp.first_name, emp.last_name, emp.gender,msal.salary from employees as emp join salaries_max as msal on emp.emp_no= msal.emp_no
+order by msal.salary desc limit 10;
+SELECT sa.salary, em.emp_no, em.first_name, em.last_name, em.gender
+     FROM salaries AS sa
+     JOIN employees AS em
+     ON sa.emp_no = em.emp_no
+     ORDER BY sa.salary DESC
+    LIMIT 10;
+select emp.emp_no, emp.first_name, emp.last_name, sal.salary, tit.title from employees as emp join salaries_max as sal 
+on emp.emp_no=sal.emp_no join titles as tit on emp.emp_no = tit.emp_no
+where tit.title ='Senior Engineer' order by emp.emp_no;
+ 
+select round(abs(timestampdiff(month,from_date,to_date))/12,1) from dept_emp where emp_no=10008;
+select (timestampdiff(year,from_date,to_date)) from dept_emp where emp_no=10008;
+ 
+select emp.first_name, emp.last_name, sal.salary, (timestampdiff(year,d_emp.from_date,d_emp.to_date)) as years_worked 
+from employees as emp 
+join salaries_max as sal on emp.emp_no = sal.emp_no 
+join dept_emp as d_emp on emp.emp_no = d_emp.emp_no 
+join titles as tit on emp.emp_no= tit.emp_no 
+join departments as dept on d_emp.dept_no=dept.dept_no
+where dept.dept_name='Development' and tit.title='Senior Engineer' and timestampdiff(year,d_emp.from_date,d_emp.to_date)<8000
+ORDER BY sal.salary desc 
+LIMIT 10;
+ 
+show indexes from employees;
+create index last_name_first_name_idx on employees(last_name,first_name); 
+select last_name from employees limit 20;
+alter table employees
+drop index last_name_idx;
+select emp_no, first_name, last_name from employees limit 10;
+select emp_no, first_name, last_name from employees order by last_name limit 10;
+select emp_no, first_name, last_name, gender from employees order by last_name,  first_name asc limit 10;
+select count(last_name) from employees where last_name='Aamodt';
+select count(emp_no) from employees;
+select last_name, count(emp_no) as num_count from employees group by last_name order by num_count desc limit 10;
+select count(emp_no) from salaries;
+select count(distinct emp_no) from salaries;
+create view salaries_max as select emp_no, max(salary) as salary from salaries group by emp_no;
+select sal.salary from salaries as sal join employees as emp on sal.emp_no = emp.emp_no where sal.salary<50000 and emp.hiredate ='1986-06-26';
+

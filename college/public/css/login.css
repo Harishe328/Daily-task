@@ -1,0 +1,27 @@
+body{
+    background-image: url('./sunset-8267343_640.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+a{
+    position: relative;
+    left: 900px;
+    text-decoration: none;
+    color: red;
+}
+.main{
+    position: relative;
+    /* background-color: red; */
+    height: 200px;
+    width: 300px;
+    top:200px;
+    left:450px;
+}
+#submit{
+    position: relative;
+    left:150px;
+    top:20px;
+    font-weight: bold;
+    padding-left: 15px;
+    padding-right: 15px;
+}

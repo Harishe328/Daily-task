@@ -1,0 +1,49 @@
+*{
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    top:0px;
+    left:0px;
+    position:absolute;
+    background:url(./college.jpg);
+    /* filter: blur(20px); */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main{
+    position :relative;
+    top:200px;
+    left:500px;
+    /* position: absolute; */
+    height: 300px;
+    width: 200px;
+    /* border: 2px solid red; */
+}
+img{
+
+    position: relative;
+    height: 150px;
+    width:180px;
+}
+.content{
+    position:relative;
+    color:Black;
+    font-weight: bolder;
+    font-size: larger;
+    /* align-content: center; */
+}
+p{
+    /* padding-bottom: 0px; */
+    text-align: center;
+}
+a{
+    position:relative;
+    left: 900px;
+    top:40px;
+    text-decoration: none;
+    color:red;
+    font-weight: bolder;
+    font-size: larger;
+}

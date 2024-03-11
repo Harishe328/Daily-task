@@ -36,13 +36,22 @@
             <h3>Clarity College of Engineering</h3>
         </div>
         <div class="navbar">
-           <a href="">Home</a>
-           <a href="">Admissions</a>
-           <a href="">About us</a>
-           <a href="">Fees structures</a>
-           <a href="">Login</a> 
+            <a href="/show" >Home</a>
+           <a href="/about" >About us</a>
+           @php
+           $roll=session('result.roll');
+           @endphp
+            @if($roll!='Student')
+             <a href='/showAll'  style="color: red;">Show All</a>
+             @if($roll!='Teacher')
+             <a href='/teacher'  style="color: red;">Teacher</a>
+             <a href='/deactive'  style="color: red;">Deactive</a>
+            @endif
+           @endif
+           <a href="/signout" >Sign Out</a>
         </div>
     </header>
     </div>
+    @yield('content')
 </body>
 </html>

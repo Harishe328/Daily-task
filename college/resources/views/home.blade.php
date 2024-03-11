@@ -12,7 +12,7 @@
         <div class="main">
         <img src="{{ asset('image/men.jpg') }}" alt="site is loading">
         <div class="content">
-            <p>CEO</p>
+            <p>CHARMAN</p>
             <p>Dr.Suganthan</p>
         </div>       
 </div>

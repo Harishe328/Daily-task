@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\StudentModel;
 use Illuminate\Http\Request;
+session_start();
 
 class StudentController extends Controller
 {
@@ -29,14 +30,95 @@ class StudentController extends Controller
         if(!$result){
             return "Please Register first";
         }else{
-            $d_roll=$result['roll'];
+            $request->session()->put('result', $result);
             $d_password=convert_uudecode($result['password']);
             if($d_password===$pass){
-                return view('taskbar')->with('roll',$d_roll);
+                return view('show')->with('result',$result);
             }else{
                 return "Password Mismatch";
             }
         }
 
+    }
+
+    public function signout(){        
+        session()->flush();
+        return redirect('/');
+    }
+
+    public function showAll(){
+        $user = new StudentModel();
+        $result = $user->showall();        
+        return view("showAll")->with("result",$result);
+    }
+
+    public function teacher(){
+        $user = new StudentModel();
+        $result = $user->teacher();        
+        return view("teacher")->with("result",$result);
+    }
+
+    public function deactive(){
+        $user = new StudentModel();
+        $result = $user->deactive();        
+        return view("deactive")->with("result",$result);
+    }
+
+    public function retrive($email){
+        $user = new StudentModel();
+        $result = $user->retrive($email);
+        if($result){
+        return redirect('/showAll');}
+        else{
+            echo "<script>alert('Popup message: Error');</script>"; 
+        }
+    }
+
+    public function edit($email){
+        $user = new StudentModel();
+        $result = $user->edit($email);
+        return view("edit")->with("result",$result);
+    }
+
+    public function editsubmit(Request $request,$email){
+            $name= $request->name;
+            $department= $request->dept;
+            $phone=$request->phone;
+        $user = new StudentModel();
+        $user->editsubmit($email,$name,$department,$phone);
+        if($user){
+         echo "<script>alert('Popup message: Data Added Successfully');</script>";
+         return redirect('/showAll');}
+         else{
+            echo "<script>alert('Popup message: Error');</script>";
+         }
+    }
+
+    public function filter(Request $request, $role){
+        $dept=$request->filter;
+        $user = new StudentModel();
+       $result= $user->filter($dept,$role);
+        if($result){
+            if($role=="Student"){
+                return view("showAll")->with("result",$result);}
+            else{
+                return view("teacher")->with("result",$result); 
+            }
+        }
+            else{
+               echo "<script>alert('Popup message: Error');</script>";
+            }
+    }
+    
+    public function delet(Request $request){
+        $email=$request->email;
+        $user = new StudentModel();
+        $user->delet($email);
+        if($user){
+        echo "<script>alert('Popup message: Deleted Successfully');</script>";
+        return redirect('/showAll');}
+        else{
+            echo "<script>alert('Popup message: Error');</script>";
+        }
     }
 }

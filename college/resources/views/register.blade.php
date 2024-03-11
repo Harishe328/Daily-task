@@ -19,7 +19,13 @@
         </tr>
         <tr>
             <td><label for="dept">Department :</label></td>
-            <td><input type="text" name="dept" required></td>
+            <td><select id="dept" name="dept">
+                <option value="ELECTRICIAL_AND_ELECTRONICS">EEE</option>
+                <option value="MECHANICAL">MECH</option>
+                <option value="ELECTRICIAL_AND_COMMICATION">ECE</option>
+                <option value="CIVIL">CIVIL</option>
+                <option value="COMPUTER_SCIENCE">CSE</option>
+            </select></td>
         </tr>
         <tr>
             <td><label for="roll">Roll :</label></td>

@@ -1,0 +1,23 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.div1{
+    position:relative;
+    top:150px;
+    /* left:500px; */
+    height: 150px;
+    width: 200px;
+    /* border:2px solid red; */
+}
+body{
+    background-image: url('./Untitled.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+td{
+    color:rgb(174, 24, 211);
+    font-weight: bold;
+    font-size: large;
+}

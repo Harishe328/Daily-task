@@ -51,3 +51,7 @@ Route::get('/delete/{email}',function($email){
     return view("delete")->with('email',$email);
 });
 Route::put('/del',[StudentController::class,'delet']);
+Route::get('/department',[StudentController::class,'department']);
+Route::get('/d_add',function(){
+    return view("d_add");
+});

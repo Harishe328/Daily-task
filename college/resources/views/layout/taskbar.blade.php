@@ -46,6 +46,7 @@
              @if($roll!='Teacher')
              <a href='/teacher'  style="color: red;">Teacher</a>
              <a href='/deactive'  style="color: red;">Deactive</a>
+             <a href='/department'  style="color: red;">Department</a>
             @endif
            @endif
            <a href="/signout" >Sign Out</a>

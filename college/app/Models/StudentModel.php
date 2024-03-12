@@ -26,15 +26,15 @@ class StudentModel extends Model
     }
 
     public function showall(){
-        return $this->where("roll","Student")->where("status","Active")->get();
+        return $this->where("roll","Student")->where("status","Active")->paginate(5);
     }
 
     public function filter($dept,$role){
-        return $this->where("department",$dept)->where("status","Active")->where("roll",$role)->get();
+        return $this->where("department",$dept)->where("status","Active")->where("roll",$role)->paginate(5);
     }
 
     public function teacher(){
-        return $this->where("roll","Teacher")->where("status","Active")->get();
+        return $this->where("roll","Teacher")->where("status","Active")->paginate(5);
     }
 
     public function deactive(){

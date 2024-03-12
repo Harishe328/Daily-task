@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
+use App\Models\DepartmentModel;
 use App\Models\StudentModel;
 use Illuminate\Http\Request;
 session_start();
@@ -120,5 +122,11 @@ class StudentController extends Controller
         else{
             echo "<script>alert('Popup message: Error');</script>";
         }
+    }
+
+    public function department(){
+        $user = new DepartmentModel();
+        $result = $user->all_Department();        
+        return view("department")->with("result",$result);
     }
 }

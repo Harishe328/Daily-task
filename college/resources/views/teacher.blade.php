@@ -31,22 +31,44 @@
         #f2{
             color:white
         }
-        #myinput{
-            border-radius: 15px;
+        #myinput1{
+            /* border-radius: 15px; */
+            margin-left: 5px;
+            max-width: 100px;
+        }
+        #myinput2{
+            /* border-radius: 15px; */
+            margin-left: 5px;
+            max-width: 100px;
+        }
+        #myinput3{
+            /* border-radius: 15px; */
+            margin-left: 5px;
+            max-width: 100px;
         }
         .pagination p{
             color: #fff;
         }
-
+        .btn{
+            color: whitesmoke;
+            border: 1px solid;
+            margin-left: 550px;
+        }
     </style>
 
 @section('content')
 <div class="tbl-container nav_block">
     <div class="f1">
         <table>
-            <tr>
-                <td><label for="" id="f2">Search:</label></td>
-                <td><input type="text" name="search" id="myInput"></td>
+            <tr id='f3' >
+                <td><label for="searchemail" id='f2'>Email:</label></td>
+                <td><input type="text" name="search" id="myInput1"></td>
+            
+                <td><label for="searchnumber" id='f2'>Phone:</label></td>
+                <td><input type="text" name="searchnumber" id="myInput2"></td>
+            
+                <td><label for="searchname" id='f2'>Name:</label></td>
+                <td><input type="text" name="searchname" id="myInput3"></td>
             </tr>
         </table>
     </div>
@@ -78,7 +100,7 @@
         <th>EDIT</th>
         @php
            $roll=session('result.roll'); 
-           @endphp
+        @endphp
         @if($roll!='Teacher')
         <th>DELETE</th>
         @endif
@@ -91,7 +113,7 @@
          <td>{{ $u->phone }}</td>
          <td><a href="/editshow/{{ $u->email }}">EDIT</a></td>
          @if($roll!='Teacher')
-         <td><a href="/delete/{{ $u->email }}">DELETE</a></td>
+         <td><a href="/del/{{ $u->email }}" onclick="return confirm('Are you sure you want to delete?')">DELETE</a></td>
          @endif
     </tr>  
 
@@ -103,6 +125,9 @@
         {{$result->links()}}
     </div>
 @endif    
+@if($roll='Principle')
+<button class="btn"><a href="/adding">Add student</a></button>
+@endif
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
     $(document).ready(function(){

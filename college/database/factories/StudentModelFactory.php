@@ -24,7 +24,7 @@ class StudentModelFactory extends Factory
         $password = 'password@123';
         $phoneNumber = '9'; 
         $phoneNumber .= $faker->randomElement([7, 8, 9]); 
-        $phoneNumber .= $faker->numerify('#######'); 
+        $phoneNumber .= $faker->numerify('########'); 
         return [
             'name' => fake()->name(),
             'phone' => $phoneNumber,

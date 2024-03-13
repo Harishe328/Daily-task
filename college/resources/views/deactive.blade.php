@@ -30,7 +30,7 @@
          <td>{{ $u->name }}</td>
          <td>{{ $u->department }}</td>
          <td>{{ $u->phone }}</td>
-         <td><a href="/retrive/{{ $u->email }}">Retrived</a></td>
+         <td><a href="/retrive/{{ $u->email }}" onclick="return confirm('Are you sure you retrive the student?')">Retrived</a></td>
     </tr>  
 
     @endforeach  

@@ -42,7 +42,7 @@
            $roll=session('result.roll');
            @endphp
             @if($roll!='Student')
-             <a href='/showAll'  style="color: red;">Show All</a>
+             <a href='/showAll'  style="color: red;">Student</a>
              @if($roll!='Teacher')
              <a href='/teacher'  style="color: red;">Teacher</a>
              <a href='/deactive'  style="color: red;">Deactive</a>

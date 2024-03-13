@@ -68,4 +68,9 @@ class StudentModel extends Model
         ]);
         return $data;
     }
+
+    public function count($department){
+        $data=$this->where("status","Active")->where("department","$department")->count();
+        return $data;
+    }
 }

@@ -43,7 +43,7 @@
             <td><label for="phone">Phone:</label></td>
             <td><input type="tel" name="phone" value="{{$result['phone']}}" required> *</td>
         </tr>
-        <tr><td><input type="submit" value="update" class="i1"></td></tr>
+        <tr><td><input type="submit" value="update" class="i1" onclick="return confirm('Are you sure you edit the student details?')"></td></tr>
     </table>
 </form>
 </div>

@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registeration</title>
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        table{
+            border:2px;
+            color:whitesmoke;
+            margin-left: 500px;
+            margin-top: 230px;
+        }
+    </style>
 </head>
 <body>
     <form action="{{route('register')}}" method="post">
@@ -20,11 +31,9 @@
         <tr>
             <td><label for="dept">Department :</label></td>
             <td><select id="dept" name="dept">
-                <option value="ELECTRICIAL_AND_ELECTRONICS">EEE</option>
-                <option value="MECHANICAL">MECH</option>
-                <option value="ELECTRICIAL_AND_COMMICATION">ECE</option>
-                <option value="CIVIL">CIVIL</option>
-                <option value="COMPUTER_SCIENCE">CSE</option>
+            @foreach($result as $u)
+                <option value='{{ $u->department }}'>{{ $u->d_shortterm }}</option>
+                @endforeach 
             </select></td>
         </tr>
         <tr>

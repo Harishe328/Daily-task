@@ -15,8 +15,10 @@ class StudentController extends Controller
         $user = new StudentModel();
         $result=$user->register($data);
         if($result){
-            echo "<script>alert('Popup message: Data Added Successfully');</script>";
-            return view('login');
+            echo "<script>alert('Popup message: Data Added Successfully');
+            window.location.href = 'login';
+            </script>";
+            
         }
     }
 
@@ -50,14 +52,18 @@ class StudentController extends Controller
 
     public function showAll(){
         $user = new StudentModel();
-        $result = $user->showall();        
-        return view("showAll")->with("result",$result);
+        $result = $user->showall();
+        $user1 = new DepartmentModel();
+        $result1 = $user1->all_Department();                
+        return view("showAll")->with("result",$result)->with("result1",$result1);
     }
 
     public function teacher(){
         $user = new StudentModel();
-        $result = $user->teacher();        
-        return view("teacher")->with("result",$result);
+        $result = $user->teacher();  
+        $user1 = new DepartmentModel();
+        $result1 = $user1->all_Department();       
+        return view("teacher")->with("result",$result)->with("result1",$result1);
     }
 
     public function deactive(){
@@ -89,8 +95,10 @@ class StudentController extends Controller
         $user = new StudentModel();
         $user->editsubmit($email,$name,$department,$phone);
         if($user){
-         echo "<script>alert('Popup message: Data Added Successfully');</script>";
-         return redirect('/showAll');}
+         echo "<script>alert('Popup message: Data Added Successfully');
+         window.location.href = '/showAll';
+         </script>";
+         }
          else{
             echo "<script>alert('Popup message: Error');</script>";
          }
@@ -99,12 +107,14 @@ class StudentController extends Controller
     public function filter(Request $request, $role){
         $dept=$request->filter;
         $user = new StudentModel();
-       $result= $user->filter($dept,$role);
+        $result= $user->filter($dept,$role);
+        $user1 = new DepartmentModel();
+        $result1 = $user1->all_Department();
         if($result){
             if($role=="Student"){
-                return view("showAll")->with("result",$result);}
+                return view("showAll")->with("result",$result)->with("result1",$result1);}
             else{
-                return view("teacher")->with("result",$result); 
+                return view("teacher")->with("result",$result)->with("result1",$result1); 
             }
         }
             else{
@@ -112,13 +122,14 @@ class StudentController extends Controller
             }
     }
     
-    public function delet(Request $request){
-        $email=$request->email;
+    public function delet($email){
         $user = new StudentModel();
         $user->delet($email);
         if($user){
-        echo "<script>alert('Popup message: Deleted Successfully');</script>";
-        return redirect('/showAll');}
+        echo "<script>alert('Popup message: Deleted Successfully');
+        window.location.href = '/showAll';
+        </script>";
+        }
         else{
             echo "<script>alert('Popup message: Error');</script>";
         }
@@ -128,5 +139,40 @@ class StudentController extends Controller
         $user = new DepartmentModel();
         $result = $user->all_Department();        
         return view("department")->with("result",$result);
+    }
+
+    public function add_department(Request $request){
+        $data=$request->except("_token");
+        $user = new DepartmentModel();
+        $result=$user->add_department($data);
+        if($result){
+            echo "<script>alert('Popup message: Data Added Successfully');
+            window.location.href = '/department';
+            </script>";
+            ;
+        }
+    }
+
+    public function department_option(){
+        $user = new DepartmentModel();
+        $result = $user->all_Department();        
+        return view("register")->with("result",$result);
+    }
+
+    public function delete_dept($department){
+        $user = new StudentModel();
+        $result = $user->count($department); 
+        // echo $result;
+        // exit;
+        if($result<0){ 
+        $user = new DepartmentModel();
+        $user->delete_dept($department);
+        return redirect('/department');}
+        else{
+             echo "<script>alert('Popup message: Student are studying in this department');
+             window.location.href = '/department';
+             </script>";
+           
+        }
     }
 }
